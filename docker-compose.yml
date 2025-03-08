@@ -11,3 +11,12 @@ services:
     environment:
       - DEBUG=True
       - DATABASE_URL=sqlite:///db.sqlite3
+
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:latest
+    container_name: redis-cache
+    ports:
+      - "6379:6379"
